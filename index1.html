@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Blank Cordova Mobile App Project Template (Lite)</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <style>
+        /* following two viewport lines are equivalent to the meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+    </style>
+
+    <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+  <script src="js/app.js"></script>             <!-- recommended location of your JavaScript code relative to other JS files -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+    
+
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
+   
+    <script src="js/forGirls.js"></script>
+ 
+<header class="header1">Nutrition Assessment Data Interpreter</header>
+    
+ 
+ <script type="text/javascript"> 
+
+
+    function displayForm(c) {
+
+        if (c.value == "male") {
+
+           
+            document.getElementById("femaleFormContainer").style.visibility = 'hidden';
+             document.getElementById("maleFormContainer").style.visibility = 'visible';
+
+        
+            
+
+        } else if (c.value == "female") {
+          
+            document.getElementById("maleFormContainer").style.visibility = 'hidden';
+
+            document.getElementById("femaleFormContainer").style.visibility = 'visible';
+
+        
+
+        } else {}
+
+
+    }
+   
+
+
+    </script>
+    
+</head>
+
+    
+<body ng-controller="appCtrl" >
+
+
+    <div class="container-fluid">
+    
+    <h2 class="title">NADI</h2> 
+    
+      <div class="image">
+    <img class="image1" width="200" height="100" src="images/pic.png" /><br><br>
+    </div> 
+          
+         
+    <div class="items"> 
+    <form name="form1">
+     <div class="sex"><span>Sex : </span> 
+   <form>
+         male<input value="male" type="radio" name="formselector" onClick="displayForm(this)"/>
+       
+        female<input value="female" type="radio" name="formselector" onClick="displayForm(this)"/> 
+         </form><br><br><br>
+    <div style="visibility:visible; position:relative" id="maleFormContainer">
+
+       <form name="maleform">
+           
+                 <strong>Weight(Kgs) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="weight" name="weight" value=""><br><br>
+                
+
+                <strong>Height( cm ) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                        <input type="number" id="height" name="height" value=""><br><br>
+                
+
+
+                <strong> Age( Years ) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageY" name="ageY" value=""><br><br>
+                
+
+                <strong> Age(Months):</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageM" name="ageM" value=""><br><br>
+                
+
+
+                  <script type="text/javascript">
+                  
+
+
+                </script>
+          <div id="float_right">
+              <button id ="but" onclick="table();return false;">Results</button><br><br> <!-- return false enables to go to another page-->
+     
+    </div>
+
+          </form>          
+
+    </div>
+
+
+    <div style="visibility:hidden;position:relative;top:-50px;margin-top:-140px" id="femaleFormContainer">
+        <form name="femaleform">
+           
+                 <strong>Weight(Kgs) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="weight" name="weight" value=""><br><br>
+                
+            
+            <strong>Height ( cm ) :</strong>
+            <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="height" name="height" value=""><br><br>
+                
+
+
+                <strong> Age( Years ) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageY" name="ageY" value=""><br><br>
+                
+
+                <strong> Age(Months):</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageM" name="ageM" value=""><br><br>
+                
+
+
+              
+       
+                <div id="float_right">
+   <button id ="but1" onclick="table2();return false;">Results</button> <br><br><!-- return false enables to go to another page-->
+
+    </div>
+
+
+          <script type="text/javascript">
+
+              // table function for  boy child
+
+        function table(){
+
+        if ((getNormality()=="OVERWEIGHT  CHILD")&&(heightCalculations()=="Tall child")){
+
+          alert("Sorry The Child is Overweight and Tall ");
+          
+          if (confirm("Go to Advice?")){
+              document.location="advice_1.html";
+          }
+            else{
+                document.location="index.html";
+            }
+      
+         
+              }
+
+        else if ((getNormality()=="OVERWEIGHT  CHILD")&&(heightCalculations()=="Stunted child")){
+
+          alert("Sorry The Child is Overweight and Stunted ");
+        
+          if (confirm("Go to Advice?")){
+              document.location="advice_2.html";
+          }
+            else{
+                document.location="index.html";
+            }
+
+              }
+
+         else if((getNormality()=="NORMAL CHILD WEIGHT")&&(heightCalculations()=="Normal Child Height")){
+
+          alert("Congratulations Your Child is  Growing Normally");
+        
+         }
+
+         else if ((getNormality()=="UNDERWEIGHT CHILD")&&(heightCalculations()=="Stunted child")) {
+          alert("Sorry The Child is Underweight and Stunted ");
+          
+          if (confirm("Go to Advice?")){
+              document.location="advice_3.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+          
+            }
+
+          else if ((getNormality()=="UNDERWEIGHT CHILD")&&(heightCalculations()=="Tall child")) {
+          alert("Sorry The Child is Underweight and Tall ");
+          
+          if (confirm("Go to Advice?")){
+              document.location="advice_4.html";
+          }
+              else{
+                  document.location="index.html";
+              }
+          }
+         
+        else if((getNormality()=="NORMAL CHILD WEIGHT")&&(heightCalculations()=="Stunted child")){
+            alert("Sorry The Child is  Stunted ");
+             if (confirm("Go to Advice?")){
+              document.location="advice_5.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+          }
+
+           else if((getNormality()=="NORMAL CHILD WEIGHT")&&(heightCalculations()=="Tall child")){
+            alert("Sorry The Child is  Tall ");
+                if (confirm("Go to Advice?")){
+              document.location="advice_6.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+          }
+
+          else if((getNormality()=="UNDERWEIGHT CHILD")&&(heightCalculations()=="Normal Child Height")){
+
+          alert("Sorry The Child is  Underweight");
+           if (confirm("Go to Advice?")){
+              document.location="advice_7.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+        
+         }
+
+          else if((getNormality()=="OVERWEIGHT  CHILD")&&(heightCalculations()=="Normal Child Height")){
+
+          alert("Sorry The Child is Overweight");
+           if (confirm("Go to Advice?")){
+              document.location="advice_8.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+        
+         }
+            
+        
+         else if((getNormality()=="invalid input")||(heightCalculations()=="invalid input")){
+
+          alert("Sorry Invalid input!!");
+        
+         }
+
+              
+            
+
+            else{
+              alert("invalid input!");
+            }
+          }
+
+        // table function for girl child
+
+          function table2(){
+
+              if ((getNormality2()=="OVERWEIGHT  CHILD")&&(heightCalculations2()=="Tall child")){
+
+          alert("Sorry The Child is Overweight and Tall ");
+          if (confirm("Go to Advice?")){
+              document.location="advice_1.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+
+              }
+
+        else if ((getNormality2()=="OVERWEIGHT  CHILD")&&(heightCalculations2()=="Stunted child")){
+
+          alert("Sorry The Child is Overweight and Stunted ");
+           if (confirm("Go to Advice?")){
+              document.location="advice_2.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+          
+              }
+
+         else if((getNormality2()=="NORMAL CHILD WEIGHT")&&(heightCalculations2()=="Normal Child Height")){
+
+          confirm("Congratulations Your Child is  Growing Normally")
+          
+         }
+
+         else if ((getNormality2()=="UNDERWEIGHT CHILD")&&(heightCalculations2()=="Stunted child")) {
+          alert("Sorry The Child is Underweight and Stunted ");
+           if (confirm("Go to Advice?")){
+              document.location="advice_3.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+            }
+
+          else if ((getNormality2()=="UNDERWEIGHT CHILD")&&(heightCalculations2()=="Tall child")) {
+          alert("Sorry The Child is Underweight and Tall ");
+           if (confirm("Go to Advice?")){
+              document.location="advice_4.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+          
+         }
+              
+        else if((getNormality2()=="NORMAL CHILD WEIGHT")&&(heightCalculations2()=="Stunted child")){
+            alert("Sorry The Child is  Stunted ");
+             if (confirm("Go to Advice?")){
+              document.location="advice_5.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+          }
+
+           else if((getNormality2()=="NORMAL CHILD WEIGHT")&&(heightCalculations2()=="Tall child")){
+              alert("Sorry The Child is  Stunted ");
+             if (confirm("Go to Advice?")){
+              document.location="advice_6.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+
+          }
+
+          else if((getNormality2()=="UNDERWEIGHT CHILD")&&(heightCalculations2()=="Normal Child Height")){
+
+           alert("Sorry The Child is  Stunted ");
+             if (confirm("Go to Advice?")){
+              document.location="advice_7.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+        
+         }
+
+          else if((getNormality2()=="OVERWEIGHT  CHILD")&&(heightCalculations2()=="Normal Child Height")){
+
+            alert("Sorry The Child is  Stunted ");
+             if (confirm("Go to Advice?")){
+              document.location="advice_8.html";
+          }
+             else{
+                 document.location="index.html";
+             }
+
+        
+         }
+              
+         else if((getNormality2()=="invalid input")||(heightCalculations2()=="invalid input")){
+
+          alert("Sorry Invalid input!!");
+        
+         }
+
+          else{
+            alert("invalid input!");
+          }
+          }
+
+        
+
+    </script>
+
+        </form>
+         
+            </div>
+    <br>
+   
+      </div>
+        
+          </form>
+        
+
+
+ </div>
+  
+</body>
+
+</html>

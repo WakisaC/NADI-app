@@ -1,0 +1,165 @@
+h2 {
+    text-align: center;
+    color: forestgreen;
+    font-size: 50px;
+    font-weight: bolder;
+    
+}
+
+td{font-style: italic;
+    text-align:left;
+    }
+th{font-size: 20px;
+    }
+
+.header1{background-color: forestgreen;
+        color: white;
+        text-align:center;
+        
+        }
+.icon{text-align:left;}
+
+
+.image{text-align: center;
+    position: center;}
+
+.table{text-align: center;
+        }
+
+.radiob{}
+.button{
+        }
+.items{text-align: center;
+        }
+
+
+.table{font-size: ;}
+
+.f{background-color: forestgreen;
+    color: white;
+    position:absolute;
+    right:0;
+    left:0;
+     bottom:;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 20;
+    
+   
+padding: }
+
+
+
+body{background-color: aliceblue;
+        
+    
+
+align-items: center;
+color: forestgreen;
+font-size: ;
+font-weight: bold;}
+
+
+
+
+
+ /* The side navigation menu */
+
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 1s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+
+
+
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 100%; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color:forestgreen;
+    ///
+      background: forestgreen; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(forestgreen, aliceblue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(forestgreen, aliceblue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(forestgreen,  aliceblue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(forestgreen,  aliceblue); /* Standard syntax */
+    ///
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-style: normal;
+    font-size: 20px;
+    color: aliceblue;
+    display: block;
+    transition: 1 s;
+    overflow-x: hidden; /* Disable menu scroll */
+    text-overflow:ellipsis;
+    width: auto;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size:20px;
+    margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+} 
+
+.titletextsig{
+    color: aliceblue;
+    font-size: 25px;
+    text-align: center;
+}

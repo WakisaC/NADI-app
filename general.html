@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>Blank Cordova Mobile App Project Template (Lite)</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet"  href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <style>
+        /* following two viewport lines are equivalent to the meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+    </style>
+
+    <script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+  <script src="js/app.js"></script>             <!-- recommended location of your JavaScript code relative to other JS files -->
+    <script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+    
+
+   <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="js/other.js"></script>
+    <script src="js/forGirls.js"></script>
+ 
+ <header class="header1"> <marquee id="ticker" direction="right" loop="100">Nutrition Assessment Data Interpreter</marquee></header>
+     <span onclick="openNav()" class="icon">
+        <div class="container" onclick="myFunction(this)">
+              <div class="bar1"></div>
+              <div class="bar2"></div>
+              <div class="bar3"></div>
+        </div> 
+    
+        </span>
+    
+ 
+ <script type="text/javascript"> 
+
+
+    function displayForm(c) {
+
+        if (c.value == "male") {
+
+           
+            document.getElementById("femaleFormContainer").style.visibility = 'hidden';
+             document.getElementById("maleFormContainer").style.visibility = 'visible';
+
+        
+            
+
+        } else if (c.value == "female") {
+            document.getElementById("maleFormContainer").style.visibility = 'hidden';
+
+            document.getElementById("femaleFormContainer").style.visibility = 'visible';
+
+        
+
+        } else {}
+
+
+    }
+   
+
+
+    </script>
+    
+</head>
+
+    
+<body ng-controller="appCtrl" >
+
+
+    <div class="container-fluid">
+    
+    <br><h3 class="title" style="text-align:center;">General Assessment</h3> <br><br>
+    
+      <div class="image">
+    <img class="image1" width="200" height="100" src="images/pic.png" /><br><br>
+    </div> 
+          
+         
+    <div class="items"> 
+    <form name="form1">
+        <div class="sex"><span> Sex : </span> 
+  
+         male<input value="male" type="radio" checked="yes" name="formselector" onClick="displayForm(this)"/>
+       
+        female<input value="female" type="radio" name="formselector" onClick="displayForm(this)"/> <br>
+
+
+         </form><br>
+            </div>
+
+
+            Oedema: </span> 
+  
+         Yes<input value="male" type="radio" checked="No" name="selector" onClick="oedema_response()"/>
+       
+        No<input value="female" type="radio" checked="yes" name="selector" onClick=""/>
+        <br><br>
+
+
+    <div style="visibility:visible; position:relative" id="maleFormContainer">
+
+       <form name="maleform">
+
+     <br><br>
+           
+                 <strong>Weight(Kgs) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="weight" name="weight" value=""><br><br>
+                
+            
+            <strong>Height ( cm ):</strong>
+            <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="height" name="height" value=""><br><br>
+                
+
+           
+            <strong>MUAC ( cm ):</strong>
+            <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="muac" name="muac" value=""><br><br>
+
+                <strong> Age( Years ) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageY" name="ageY" value=""><br><br>
+                
+
+                <strong> Age(Months):</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageM" name="ageM" value=""><br><br>
+                
+
+
+                  <script type="text/javascript">
+                  
+
+
+                </script>
+          <div id="float_right">
+              <button id ="reload" onclick="table();return false;">Results</button><br><br> <!-- return false enables to go to another page-->
+     
+    </div>
+
+          </form>          
+
+    </div>
+
+
+    <div style="visibility:hidden;position:relative;top:-90px;margin-top:-170px" id="femaleFormContainer">
+        <form name="femaleform">
+
+           
+                 <strong>Weight(Kgs) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="weight" name="weight" value=""><br><br>
+                
+            
+            <strong>Height ( cm ):</strong>
+            <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="height" name="height" value=""><br><br>
+                
+            <strong>MUAC ( cm ):</strong>
+            <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="muac" name="muac" value=""><br><br>
+
+                <strong> Age( Years ) :</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageY" name="ageY" value=""><br><br>
+                
+
+                <strong> Age(Months):</strong>
+                <span style="display:inline-block; width: 10px;"></span>
+                    <input type="number" id="ageM" name="ageM" value=""><br><br>
+                 
+       
+                <div id="float_right">
+   <button id ="but1" onclick="table2();return false;">Results</button> <br><br><!-- return false enables to go to another page-->
+
+    </div>
+
+
+          <script type="text/javascript">
+
+            //function for positive oedema child
+
+            function oedema_response(){
+              alert("Sorry the Child is Undernourished. Visit nearest Health center or Hospital")
+             // document.location="oedema.html";
+             document.getElementById("femaleFormContainer").style.visibility = 'hidden';
+             document.getElementById("maleFormContainer").style.visibility = 'hidden';
+              if (confirm("Go Back To Choose Assessment?")){
+              document.location="choose.html";
+          }
+            else{
+                document.location="index.html";
+            }
+
+            }
+
+              // table function for  boy child
+
+        function table(){
+         if(checkInput()=="invalid input"){
+             alert("invalid input");
+         }
+            else if(checkInput()=="Enter MUAC value and Age"){
+                alert("Enter MUAC value and Age")
+            }
+            
+            else if(checkInput()=="Enter MUAC value and Age in Years"){
+                alert("Enter MUAC value and Age in Years")
+            }
+            
+             else if(checkInput()=="Enter MUAC value and Age in Months"){
+                alert("Enter MUAC value and Age in Months")
+            }
+            else if(checkInput()=="Enter Child Height, Age in Months and MUAC value"){
+                alert("Enter Child Height, Age in Months and MUAC value")
+            }
+            else if(checkInput()=="Enter Child Height, Age in Years and MUAC value"){
+                alert("Enter Child Height, Age in Years and MUAC value")
+            }
+            else if(checkInput()=="Enter Child Height, Weight and MUAC value"){
+                alert("Enter Child Height, Weight and MUAC value")
+            }
+            else if(checkInput()=="Enter Child Weight, Age in Months and MUAC value"){
+                alert("Enter Child Weight, Age in Months and MUAC value")
+            }
+            else if(checkInput()=="Enter Child Weight, Age in Years and MUAC value"){
+                alert("Enter Child Weight, Age in Years and MUAC value")
+            }
+            else if(checkInput()=="Enter Child Weight and MUAC value"){
+                alert("Enter Child Weight and MUAC value")
+            }
+            else if(checkInput()=="Enter Child Height and MUAC value"){
+                alert("Enter Child Height and MUAC value")
+            }
+            else if(checkInput()=="enter MUAC value please"){
+                alert("enter MUAC value please")
+            }                          
+            
+            else if(checkInput()=="Enter Child Height and Age"){
+                alert("Enter Child Height and Age")
+            }
+            else if(checkInput()=="Enter Child Weight and Age"){
+                alert("Enter Child Weight and Age")
+            }
+            else if(checkInput()=="Enter Child Weight Height and Age in Years"){
+                alert("Enter Child Weight Height and Age in Years")
+            }
+            else if(checkInput()=="Enter Child Weight Height and Age in Months"){
+                alert("Enter Child Weight Height and Age in Months")
+            }
+            else if(checkInput()=="Enter Child Age Please"){
+                alert("Enter Child Age Please")
+            }    
+            else if(checkInput()=="Enter Child Weight & Height"){
+                alert("Enter Child Weight & Height")
+            }
+             else if(checkInput()=="enter Height please"){
+                alert("Enter Height Please")
+            }  
+               else if(checkInput()=="enter Weight please"){
+                alert("Enter Child Weight Please")
+            } 
+            else if(checkInput()=="enter age in years please"){
+                alert("Enter Age in Years please")
+            }
+            else if(checkInput()=="enter age in months please"){
+                alert("Enter Age in Months please")
+            }
+            else if(checkInput()== "Sorry Child Age Exceeds 5 Years. Try Again"){
+                alert("Sorry Child Age Exceeds 5 Years. Try Again")
+            }
+            else if(checkInput()=="Sorry invalid Age in Months. Try Again"){
+                alert("Sorry invalid Age in Months. Try Again")
+            }
+            
+            else if(checkInput()=="Sorry Child Age Exceeds 5 years"){
+                alert("Sorry Child Age exceeds 5 years.Try Again")
+            }
+              else if(checkInput()== "Sorry Child Age in months must be greater or equal to 6. Try Again"){
+                alert("Sorry Child Age in months must be greater or equal to 6. Try Again");
+            }
+        else{  
+
+          
+             if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="Normal Child" && return_muac()=="Normal MUAC Status" )) {
+               document.location="general_Result.html";     
+             }
+
+             else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="Normal Child" && return_muac()=="Moderate Malnourished" )) {
+                document.location="result_1.html";
+             }
+
+             //OVERNOURISHED
+           
+            
+      
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="overnourished" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_18 - Copy.html";
+          }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="overnourished" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_19 - Copy.html";
+          }
+         
+           else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="overnourished" && return_muac()=="Severe Malnourished" )) {
+            document.location="result_20 - Copy.html";
+           }
+
+
+              else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="overnourished" && return_muac()=="Normal MUAC Status" )) {
+                document.location="result_21 - Copy.html";
+              }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="overnourished" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_22 - Copy.html";
+          }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="overnourished" && return_muac()=="Severe Malnourished")) {
+            document.location="result_23 - Copy.html";
+          }
+
+
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="overnourished" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_24 - Copy.html";
+          }
+         
+           else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="overnourished" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_25 - Copy.html";
+           }
+
+              else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="overnourished" && return_muac()=="Severe Malnourished" )) {
+                document.location="result_26 - Copy.html";
+              }
+                else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="overnourished" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_9 - Copy.html";
+          }
+         
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="overnourished" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_10 - Copy.html";
+          }
+         
+           else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="overnourished" && return_muac()=="Severe Malnourished" )) {
+            document.location="result_11 - Copy.html";
+           }
+
+
+              else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Stunted child")&&(wastingLimits()=="overnourished" && return_muac()=="Normal MUAC Status" )) {
+                document.location="result_12 - Copy.html";
+              }
+         
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Stunted child")&&(wastingLimits()=="overnourished" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_13 - Copy.html";
+          }
+         
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Stunted child")&&(wastingLimits()=="overnourished" && return_muac()=="Severe Malnourished")) {
+            document.location="result_14 - Copy.html";
+          }
+
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Tall child")&&(wastingLimits()=="overnourished" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_15 - Copy.html";
+          }
+         
+           else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Tall child")&&(wastingLimits()=="overnourished" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_16 - Copy.html";
+           }
+
+              else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Tall child")&&(wastingLimits()=="overnourished" && return_muac()=="Severe Malnourished" )) {
+                document.location="result_17 - Copy.html";
+              }
+
+
+             ////////////////////////////////////////////////////////////////////
+
+              else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="Normal Child" && return_muac()=="Severe Malnourished" )) {
+                 document.location="result_2.html";
+              }
+         
+
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_3.html";
+          }
+         
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_4.html";
+          }
+         
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Severe Malnourished")) {
+            document.location="result_5.html";
+          }
+
+
+
+            else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child" && return_muac()=="Normal MUAC Status" )) {
+              document.location="result_6.html";
+            }
+
+              else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child" && return_muac()=="Moderate Malnourished")) {
+                document.location="result_7.html";
+              }
+         
+          else if ((getNormality()=="NORMAL CHILD WEIGHT" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child" && return_muac()=="Severe Malnourished")) {
+            document.location="result_8.html";
+          }
+
+
+         
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="wasted" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_9.html";
+          }
+         
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="wasted" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_10.html";
+          }
+         
+           else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="wasted" && return_muac()=="Severe Malnourished" )) {
+            document.location="result_11.html";
+           }
+
+
+              else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="wasted" && return_muac()=="Normal MUAC Status" )) {
+                document.location="result_12.html";
+              }
+         
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="wasted" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_13.html";
+          }
+         
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="wasted" && return_muac()=="Severe Malnourished")) {
+            document.location="result_14.html";
+          }
+
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="wasted" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_15.html";
+          }
+         
+           else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="wasted" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_16.html";
+           }
+
+              else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="wasted" && return_muac()=="Severe Malnourished" )) {
+                document.location="result_17.html";
+              }
+
+      
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="wasted" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_18.html";
+          }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="wasted" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_19.html";
+          }
+         
+           else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Normal Child Height")&&(wastingLimits()=="wasted" && return_muac()=="Severe Malnourished" )) {
+            document.location="result_20.html";
+           }
+
+
+              else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="wasted" && return_muac()=="Normal MUAC Status" )) {
+                document.location="result_21.html";
+              }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="wasted" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_22.html";
+          }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="wasted" && return_muac()=="Severe Malnourished")) {
+            document.location="result_23.html";
+          }
+
+
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="wasted" && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_24.html";
+          }
+         
+           else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="wasted" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_25.html";
+           }
+
+              else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="wasted" && return_muac()=="Severe Malnourished" )) {
+                document.location="result_26.html";
+              }
+
+               else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Normal MUAC Status" )) {
+                document.location="result_27.html";
+              }
+         
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_28.html";
+          }
+         
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Severe Malnourished")) {
+            document.location="result_29.html";
+          }
+
+          else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child"  && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_30.html";
+          }
+         
+           else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child"  && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_31.html";
+           }
+
+              else if ((getNormality()=="UNDERWEIGHT CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child"  && return_muac()=="Severe Malnourished" )) {
+                document.location="result_32.html";
+              }
+
+
+                  else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Normal MUAC Status" )) {
+                document.location="result_33.html";
+              }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_34.html";
+          }
+         
+          else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Stunted child")&&(wastingLimits()=="Normal Child" && return_muac()=="Severe Malnourished")) {
+            document.location="result_35.html";
+          }
+
+               else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child"  && return_muac()=="Normal MUAC Status" )) {
+            document.location="result_36.html";
+          }
+         
+           else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child" && return_muac()=="Moderate Malnourished" )) {
+            document.location="result_37.html";
+           }
+
+              else if ((getNormality()=="OVERWEIGHT  CHILD" && heightCalculations()=="Tall child")&&(wastingLimits()=="Normal Child" && return_muac()=="Severe Malnourished" )) {
+                document.location="result_38.html";
+              }
+
+
+          
+              }
+          }
+
+       
+        // table function for girl child
+
+          function table2(){
+              
+        if(checkInput2()=="invalid input"){
+             alert("invalid input");
+         }
+              
+              else if(checkInput2()=="Enter MUAC value and Age"){
+                alert("Enter MUAC value and Age")
+            }
+            
+            else if(checkInput2()=="Enter MUAC value and Age in Years"){
+                alert("Enter MUAC value and Age in Years")
+            }
+            
+             else if(checkInput2()=="Enter MUAC value and Age in Months"){
+                alert("Enter MUAC value and Age in Months")
+            }
+            else if(checkInput2()=="Enter Child Height, Age in Months and MUAC value"){
+                alert("Enter Child Height, Age in Months and MUAC value")
+            }
+            else if(checkInput2()=="Enter Child Height, Age in Years and MUAC value"){
+                alert("Enter Child Height, Age in Years and MUAC value")
+            }
+            else if(checkInput2()=="Enter Child Height, Weight and MUAC value"){
+                alert("Enter Child Height, Weight and MUAC value")
+            }
+            else if(checkInput2()=="Enter Child Weight, Age in Months and MUAC value"){
+                alert("Enter Child Weight, Age in Months and MUAC value")
+            }
+            else if(checkInput2()=="Enter Child Weight, Age in Years and MUAC value"){
+                alert("Enter Child Weight, Age in Years and MUAC value")
+            }
+            else if(checkInput2()=="Enter Child Weight and MUAC value"){
+                alert("Enter Child Weight and MUAC value")
+            }
+            else if(checkInput2()=="Enter Child Height and MUAC value"){
+                alert("Enter Child Height and MUAC value")
+            }
+            else if(checkInput2()=="enter MUAC value please"){
+                alert("enter MUAC value please")
+            }                          
+            
+              
+            else if(checkInput2()=="Enter Child Height and Age"){
+                alert("Enter Child Height and Age")
+            }
+            else if(checkInput2()=="Enter Child Weight and Age"){
+                alert("Enter Child Weight and Age")
+            }
+            else if(checkInput2()=="Enter Child Weight Height and Age in Years"){
+                alert("Enter Child Weight Height and Age in Years")
+            }
+            else if(checkInput2()=="Enter Child Weight Height and Age in Months"){
+                alert("Enter Child Weight Height and Age in Months")
+            }
+            else if(checkInput2()=="Enter Child Age Please"){
+                alert("Enter Child Age Please")
+            }    
+               else if(checkInput2()=="enter Height please"){
+                alert("Enter Height Please")
+            }  
+               else if(checkInput2()=="enter Weight please"){
+                alert("Enter Child Weight Please")
+            }  
+            else if(checkInput2()=="Enter Child Weight & Height"){
+                alert("Enter Child Weight & Height")
+            }
+            else if(checkInput2()=="enter age in years please"){
+                alert("Enter Age in Years please")
+            }
+            else if(checkInput2()=="enter age in months please"){
+                alert("Enter Age in Months please")
+            }
+            else if(checkInput2()== "Sorry Child Age Exceeds 5 Years. Try Again"){
+                alert("Sorry Child Age Exceeds 5 Years. Try Again")
+            }
+            else if(checkInput2()=="Sorry invalid Age in Months. Try Again"){
+                alert("Sorry invalid Age in Months. Try Again")
+            }
+            
+            else if(checkInput2()=="Sorry Child Age Exceeds 5 years"){
+                alert("Sorry Child Age exceeds 5 years.Try Again")
+            }
+              else if(checkInput2()== "Sorry Child Age in months must be greater or equal to 6. Try Again"){
+                alert("Sorry Child Age in months must be greater or equal to 6. Try Again");
+            }
+        else{
+
+        
+             if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Normal MUAC Status" )) {
+               document.location="general_Result.html";     
+             }
+
+             else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Moderate Malnourished" )) {
+                document.location="result_1.html";
+             }
+
+             //OVERNOURISHED
+           
+            
+      
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="overnourished" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_18 - Copy.html";
+          }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="overnourished" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_19 - Copy.html";
+          }
+         
+           else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="overnourished" && return_muac2()=="Severe Malnourished" )) {
+            document.location="result_20 - Copy.html";
+           }
+
+
+              else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Normal MUAC Status" )) {
+                document.location="result_21 - Copy.html";
+              }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_22 - Copy.html";
+          }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_23 - Copy.html";
+          }
+
+
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_24 - Copy.html";
+          }
+         
+           else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_25 - Copy.html";
+           }
+
+              else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Severe Malnourished" )) {
+                document.location="result_26 - Copy.html";
+              }
+                else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="overnourished" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_9 - Copy.html";
+          }
+         
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="overnourished" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_10 - Copy.html";
+          }
+         
+           else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="overnourished" && return_muac2()=="Severe Malnourished" )) {
+            document.location="result_11 - Copy.html";
+           }
+
+
+              else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Normal MUAC Status" )) {
+                document.location="result_12 - Copy.html";
+              }
+         
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_13 - Copy.html";
+          }
+         
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_14 - Copy.html";
+          }
+
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_15 - Copy.html";
+          }
+         
+           else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_16 - Copy.html";
+           }
+
+              else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="overnourished" && return_muac2()=="Severe Malnourished" )) {
+                document.location="result_17 - Copy.html";
+              }
+
+
+             ////////////////////////////////////////////////////////////////////
+
+              else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Severe Malnourished" )) {
+                 document.location="result_2.html";
+              }
+         
+
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_3.html";
+          }
+         
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_4.html";
+          }
+         
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_5.html";
+          }
+
+
+
+            else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Normal MUAC Status" )) {
+              document.location="result_6.html";
+            }
+
+              else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Moderate Malnourished")) {
+                document.location="result_7.html";
+              }
+         
+          else if ((getNormality2()=="NORMAL CHILD WEIGHT" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_8.html";
+          }
+
+
+         
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="wasted" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_9.html";
+          }
+         
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="wasted" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_10.html";
+          }
+         
+           else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="wasted" && return_muac2()=="Severe Malnourished" )) {
+            document.location="result_11.html";
+           }
+
+
+              else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="wasted" && return_muac2()=="Normal MUAC Status" )) {
+                document.location="result_12.html";
+              }
+         
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="wasted" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_13.html";
+          }
+         
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="wasted" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_14.html";
+          }
+
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="wasted" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_15.html";
+          }
+         
+           else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="wasted" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_16.html";
+           }
+
+              else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="wasted" && return_muac2()=="Severe Malnourished" )) {
+                document.location="result_17.html";
+              }
+
+      
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="wasted" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_18.html";
+          }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="wasted" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_19.html";
+          }
+         
+           else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Normal Child Height")&&(wastingLimits2()=="wasted" && return_muac2()=="Severe Malnourished" )) {
+            document.location="result_20.html";
+           }
+
+
+              else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="wasted" && return_muac2()=="Normal MUAC Status" )) {
+                document.location="result_21.html";
+              }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="wasted" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_22.html";
+          }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="wasted" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_23.html";
+          }
+
+
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="wasted" && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_24.html";
+          }
+         
+           else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="wasted" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_25.html";
+           }
+
+              else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="wasted" && return_muac2()=="Severe Malnourished" )) {
+                document.location="result_26.html";
+              }
+
+               else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Normal MUAC Status" )) {
+                document.location="result_27.html";
+              }
+         
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_28.html";
+          }
+         
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_29.html";
+          }
+
+          else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child"  && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_30.html";
+          }
+         
+           else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child"  && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_31.html";
+           }
+
+              else if ((getNormality2()=="UNDERWEIGHT CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child"  && return_muac2()=="Severe Malnourished" )) {
+                document.location="result_32.html";
+              }
+
+
+                  else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Normal MUAC Status" )) {
+                document.location="result_33.html";
+              }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_34.html";
+          }
+         
+          else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Stunted child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Severe Malnourished")) {
+            document.location="result_35.html";
+          }
+
+               else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child"  && return_muac2()=="Normal MUAC Status" )) {
+            document.location="result_36.html";
+          }
+         
+           else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Moderate Malnourished" )) {
+            document.location="result_37.html";
+           }
+
+              else if ((getNormality2()=="OVERWEIGHT  CHILD" && heightCalculations2()=="Tall child")&&(wastingLimits2()=="Normal Child" && return_muac2()=="Severe Malnourished" )) {
+                document.location="result_38.html";
+              }
+
+
+          
+              }
+          }
+        
+
+    </script>
+
+        </form>
+         
+            </div>
+    <br>
+   
+      </div>
+        
+        
+        
+
+
+ </div>
+       
+     <div id="mySidenav" class="sidenav" style="visibility:hidden;" > 
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+         <hr>
+  <a href="index.html">Home</a><hr>
+  <a href="choose.html">Choose Assessment</a><hr>
+    <a href="#.html">Child Progress</a><hr>
+    <a href="contact.html">Feedback</a><hr>
+  <a href="about.html">About NADI</a><hr>
+</div>
+
+<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+<div id="main">
+    
+  
+</body>
+
+</html>
